@@ -1,27 +1,35 @@
 const express = require("express");
-const genericData = require("../models/generic");
+const genericData = require("../models/add");
 
 const CreateData = async (req, res) => {
   const data = req.body;
 
-  const Data = new genericData(data);
+  // const Data = new genericData(data);
+  genericData.updateOne({ _id: "626e8b61bdd7830870540073", },
+    data, function (err, docs) {
+      if (err) {
+        console.log(err)
+      }
+      else {
+        console.log("Updated Docs : ", data);
+        res.status(200).json(data);
+      }
+    });
+  // try {
+  //   await Data.update({_id: "626e8b61bdd7830870540073", });
 
-  try {
-    await Data.save();
-
-    res.status(201).json(Data);
-  } catch (error) {
-    res.status(409).json({ message: error.message });
-  }
+  //   res.status(201).json(Data);
+  // } catch (error) {
+  //   res.status(409).json({ message: error.message });
+  // }
 };
 
 const getData = async (req, res) => {
   genericData
-    .find()
-    .sort({ createdAt: -1 })
+    .findOne({ _id: "626e8b61bdd7830870540073" })
     .then((note) => {
       res.status(200).json({
-        message: "Fetched posts successfully.",
+        message: "Fetched limit successfully.",
         data: note,
       });
     })

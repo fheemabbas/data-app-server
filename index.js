@@ -11,11 +11,11 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: "true" }));
 app.use(cors());
 // app.use("/add", addRouter);
 app.use("/newcampagins", genericRoute);
+app.use("/aspire", genericRoute);
 app.get("/", (req, res) => {
   res.send("welcome to node js");
 });
-const CONNECTION_URL =
-  "mongodb+srv://admin:admin123456@cluster0.aher6.mongodb.net/demoDB?retryWrites=true&w=majority";
+const CONNECTION_URL = "mongodb+srv://admin:admin1234@cluster0.hlwij.mongodb.net/aspireDB?retryWrites=true&w=majority"
 const PORT = process.env.PORT || 5000;
 
 mongoose

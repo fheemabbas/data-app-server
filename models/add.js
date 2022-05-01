@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 // With schema porperty define
 const addDataSchema = mongoose.Schema({
-  name: String,
-  address: String,
+  limit: Number,
+  isOnWeeklyLimit: Boolean,
   CreateAt: {
     type: Date,
     default: new Date(),
